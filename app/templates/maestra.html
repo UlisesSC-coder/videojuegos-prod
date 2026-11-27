@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD MySQL con Flask - {% block titulo %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+
+<body>
+    <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a href="https://parzibyte.me/blog" class="navbar-item">
+                <img alt="Logo de Parzibyte"
+                    src="https://raw.githubusercontent.com/parzibyte/ejemplo-mern/main/src/img/parzibyte_logo.png"
+                    style="max-height: 80px" />
+            </a>
+            <button class="navbar-burger is-warning button" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="{{url_for('main.juegos')}}">Juegos</a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        {# current_user lo pone Flask-Login disponible en todas las plantillas #}
+                        {% if current_user.is_authenticated %}
+                        <a href="{{url_for('main.profile')}}" class="button is-light">{{current_user.username}}</a>
+                        <a href="{{url_for('auth.logout')}}" class="button is-danger">Cerrar sesión</a>
+                        {% else %}
+                        <a href="{{url_for('auth.login')}}" class="button is-primary"><strong>Iniciar sesión</strong></a>
+                        <a href="{{url_for('auth.registro')}}" class="button is-light">Registrarse</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {# Mensajes flash (éxito, error, etc.) #}
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+    {% if mensajes %}
+    <section class="section pb-0">
+        {% for categoria, mensaje in mensajes %}
+        <div class="notification is-{{categoria if categoria != 'message' else 'info'}}">{{mensaje}}</div>
+        {% endfor %}
+    </section>
+    {% endif %}
+    {% endwith %}
+    {%block contenido %} {% endblock %}
+</body>
+
+</html>

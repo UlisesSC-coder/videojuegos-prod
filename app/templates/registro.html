@@ -1,0 +1,19 @@
+{% extends "maestra.html" %}
+{% block titulo %}Registro{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column is-half">
+            <h3 class="is-size-3">Crear cuenta</h3>
+            <form action="{{url_for('auth.registro')}}" method="post">
+                <label for="username">Usuario</label>
+                <input required type="text" class="input" name="username" id="username">
+                <label for="password">Contraseña</label>
+                <input required type="password" class="input" name="password" id="password">
+                <button type="submit" class="button is-success mt-2">Registrarme</button>
+                <a href="{{url_for('auth.login')}}" class="button is-light mt-2">Ya tengo cuenta</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

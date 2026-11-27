@@ -1,0 +1,9 @@
+{% extends "maestra.html" %}
+{% block titulo %}Perfil{% endblock %}
+{% block contenido %}
+<section class="section">
+    <h3 class="is-size-3">Perfil</h3>
+    <p>Hola, <strong>{{usuario.username}}</strong>. Esta página solo se ve con sesión iniciada.</p>
+    <a href="{{url_for('main.juegos')}}" class="button is-primary mt-2">Ir a juegos</a>
+</section>
+{% endblock %}
