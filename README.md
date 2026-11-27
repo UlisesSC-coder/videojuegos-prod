@@ -98,25 +98,4 @@ Las tablas `juegos` y `usuarios_app` se crean automáticamente al arrancar la ap
 - **Python 3.13:** misma versión con la que se desarrolló y probó el proyecto.
 - **Usuario sin privilegios (`appuser`)** dentro del contenedor y `.dockerignore` para no copiar el `venv` ni archivos innecesarios a la imagen.
 
-## Capturas de la aplicación en ejecución
 
-### Contenedores corriendo (`docker compose ps`)
-![docker compose ps](docs/capturas/01-compose-ps.png)
-
-### Registro de usuario
-![Registro](docs/capturas/02-registro.png)
-
-### Inicio de sesión
-![Login](docs/capturas/03-login.png)
-
-### Listado de videojuegos (sesión iniciada)
-![Listado](docs/capturas/04-listado.png)
-
-### Creación de un videojuego
-![Crear](docs/capturas/05-crear.png)
-
-### Edición de un videojuego
-![Editar](docs/capturas/06-editar.png)
-
-### Resultado después de editar
-![Resultado](docs/capturas/07-resultado.png)
